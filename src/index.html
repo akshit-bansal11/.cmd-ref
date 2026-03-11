@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Git & GitHub Commands Reference</title>
+  <meta name="description" content="A comprehensive, searchable reference for Git and GitHub CLI commands. Find any command instantly.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+</head>
+<body>
+  <div class="ambient-bg"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="header-top">
+        <div class="logo-section">
+          <div class="logo-icon">⚡</div>
+          <div class="logo-text">
+            <h1>Git & GitHub Ref</h1>
+            <span>Command Reference</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search -->
+      <div class="search-wrapper">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search commands or describe what you want to do..."
+          class="search-input"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <div class="search-shortcut">
+          <kbd>/</kbd>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Stats -->
+  <div class="stats">
+    Showing <span id="visibleCount">0</span> commands
+  </div>
+
+  <!-- Commands Grid -->
+  <div id="grid" class="masonry-grid"></div>
+
+  <!-- No Results -->
+  <div id="noResults" class="no-results hidden">
+    <div class="no-results-icon">🔍</div>
+    <div class="no-results-text">No commands found</div>
+    <div class="no-results-hint">Try a different search term or describe what you want to do</div>
+  </div>
+
+  <script type="module" src="/src/index.js"></script>
+</body>
+</html>
