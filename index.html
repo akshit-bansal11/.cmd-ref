@@ -9,13 +9,13 @@
       href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>%3E_</text></svg>"
     />
   </head>
-  <body class="bg-neutral-200 text-neutral-700 dark:bg-neutral-900 dark:text-neutral-200 min-h-screen relative selection:bg-neutral-700 selection:text-neutral-200 dark:selection:bg-neutral-200 dark:selection:text-neutral-700">
-    <div class="fixed inset-0 pointer-events-none z-[-1] bg-[radial-gradient(circle_at_center,rgba(64,64,64,0.05)_1px,transparent_1px)] dark:bg-[radial-gradient(circle_at_center,rgba(229,229,229,0.05)_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+  <body class="bg-zinc-50 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-200 min-h-screen relative selection:bg-zinc-900 selection:text-white dark:selection:bg-zinc-100 dark:selection:text-zinc-900">
+    <div class="fixed inset-0 pointer-events-none z-[-1] bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.05)_1px,transparent_1px)] dark:bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:24px_24px]"></div>
     <header
-      class="sticky top-0 z-10 bg-neutral-200/60 dark:bg-neutral-900/60 backdrop-blur-md border-b border-neutral-700/10 dark:border-neutral-200/10"
+      class="sticky top-0 z-10 bg-zinc-50/60 dark:bg-zinc-950/60 backdrop-blur-md border-b border-zinc-900/5 dark:border-zinc-50/5"
     >
       <div class="w-full px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
-        <h1 class="text-lg font-bold tracking-tight shrink-0 font-mono">
+        <h1 class="text-lg font-bold tracking-tight shrink-0 font-mono text-zinc-900 dark:text-zinc-100">
           &gt;_ git-ref
         </h1>
 
@@ -24,13 +24,13 @@
           type="text"
           placeholder="Search commands..."
           autocomplete="off"
-          class="flex-1 max-w-md px-4 py-2 rounded-md border border-neutral-700/10 dark:border-neutral-200/10 bg-neutral-200/50 dark:bg-neutral-900/50 backdrop-blur-sm text-sm placeholder-neutral-700/40 dark:placeholder-neutral-200/40 focus:outline-none focus:ring-1 focus:ring-neutral-700 dark:focus:ring-neutral-200 focus:bg-neutral-200 dark:focus:bg-neutral-900"
+          class="flex-1 max-w-md px-4 py-2 rounded-md border border-zinc-300/50 dark:border-zinc-700/50 bg-white/50 dark:bg-zinc-800/50 backdrop-blur-sm text-sm placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-zinc-100 focus:bg-white dark:focus:bg-zinc-800"
         />
 
         <button
           id="theme-toggle"
           type="button"
-          class="p-2.5 rounded-md border border-neutral-700/10 dark:border-neutral-200/10 hover:bg-neutral-700/5 dark:hover:bg-neutral-200/5 active:bg-neutral-700/10 dark:active:bg-neutral-200/10 text-sm leading-none focus:outline-none focus:ring-1 focus:ring-neutral-700 dark:focus:ring-neutral-200"
+          class="p-2.5 rounded-md border border-zinc-300/50 dark:border-zinc-700/50 hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50 active:bg-zinc-300/50 dark:active:bg-zinc-700/50 text-sm leading-none focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-zinc-100 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100"
           aria-label="Toggle theme"
         ></button>
       </div>
@@ -38,7 +38,7 @@
 
     <p
       id="empty"
-      class="hidden text-center text-neutral-700/50 dark:text-neutral-200/50 mt-20 text-sm"
+      class="hidden text-center text-zinc-500 dark:text-zinc-400 mt-20 text-sm"
     >
       No commands found.
     </p>

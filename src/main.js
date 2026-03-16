@@ -139,6 +139,51 @@ function esc(str) {
   return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 }
 
+const PALETTES = [
+  {
+    borderOuter: 'border-blue-500/20 dark:border-blue-400/20',
+    title: 'text-blue-700 dark:text-blue-400 border-b-blue-500/10 dark:border-b-blue-400/10',
+    codeBg: 'bg-white/50 dark:bg-zinc-800/50 border-blue-200 dark:border-blue-800/50',
+    codeText: 'text-blue-900 dark:text-blue-100',
+    btnText: 'text-zinc-500 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-zinc-900/10 dark:hover:bg-zinc-50/10'
+  },
+  {
+    borderOuter: 'border-emerald-500/20 dark:border-emerald-400/20',
+    title: 'text-emerald-700 dark:text-emerald-400 border-b-emerald-500/10 dark:border-b-emerald-400/10',
+    codeBg: 'bg-white/50 dark:bg-zinc-800/50 border-emerald-200 dark:border-emerald-800/50',
+    codeText: 'text-emerald-900 dark:text-emerald-100',
+    btnText: 'text-zinc-500 dark:text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-zinc-900/10 dark:hover:bg-zinc-50/10'
+  },
+  {
+    borderOuter: 'border-amber-500/20 dark:border-amber-400/20',
+    title: 'text-amber-700 dark:text-amber-400 border-b-amber-500/10 dark:border-b-amber-400/10',
+    codeBg: 'bg-white/50 dark:bg-zinc-800/50 border-amber-200 dark:border-amber-800/50',
+    codeText: 'text-amber-900 dark:text-amber-100',
+    btnText: 'text-zinc-500 dark:text-zinc-400 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-zinc-900/10 dark:hover:bg-zinc-50/10'
+  },
+  {
+    borderOuter: 'border-violet-500/20 dark:border-violet-400/20',
+    title: 'text-violet-700 dark:text-violet-400 border-b-violet-500/10 dark:border-b-violet-400/10',
+    codeBg: 'bg-white/50 dark:bg-zinc-800/50 border-violet-200 dark:border-violet-800/50',
+    codeText: 'text-violet-900 dark:text-violet-100',
+    btnText: 'text-zinc-500 dark:text-zinc-400 hover:text-violet-600 dark:hover:text-violet-400 hover:bg-zinc-900/10 dark:hover:bg-zinc-50/10'
+  },
+  {
+    borderOuter: 'border-rose-500/20 dark:border-rose-400/20',
+    title: 'text-rose-700 dark:text-rose-400 border-b-rose-500/10 dark:border-b-rose-400/10',
+    codeBg: 'bg-white/50 dark:bg-zinc-800/50 border-rose-200 dark:border-rose-800/50',
+    codeText: 'text-rose-900 dark:text-rose-100',
+    btnText: 'text-zinc-500 dark:text-zinc-400 hover:text-rose-600 dark:hover:text-rose-400 hover:bg-zinc-900/10 dark:hover:bg-zinc-50/10'
+  },
+  {
+    borderOuter: 'border-cyan-500/20 dark:border-cyan-400/20',
+    title: 'text-cyan-700 dark:text-cyan-400 border-b-cyan-500/10 dark:border-b-cyan-400/10',
+    codeBg: 'bg-white/50 dark:bg-zinc-800/50 border-cyan-200 dark:border-cyan-800/50',
+    codeText: 'text-cyan-900 dark:text-cyan-100',
+    btnText: 'text-zinc-500 dark:text-zinc-400 hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-zinc-900/10 dark:hover:bg-zinc-50/10'
+  }
+]
+
 function render(categories) {
   if (categories.length === 0) {
     gridEl.innerHTML = ''
@@ -150,9 +195,11 @@ function render(categories) {
 
   gridEl.innerHTML = categories
     .map(
-      (cat) => `
-    <div class="mb-6 break-inside-avoid rounded-xl border border-neutral-700/10 dark:border-neutral-200/10 bg-neutral-200/60 dark:bg-neutral-900/60 backdrop-blur-md p-5 shadow-sm">
-      <h2 class="text-xs font-bold uppercase tracking-widest text-neutral-700/50 dark:text-neutral-200/50 mb-4 border-b border-neutral-700/5 dark:border-neutral-200/5 pb-2">
+      (cat, idx) => {
+        const p = PALETTES[idx % PALETTES.length]
+        return `
+    <div class="mb-6 break-inside-avoid rounded-xl border ${p.borderOuter} bg-zinc-50/60 dark:bg-zinc-950/60 backdrop-blur-md p-5 shadow-sm">
+      <h2 class="text-xs font-bold uppercase tracking-widest ${p.title} mb-4 border-b pb-2">
         ${esc(cat.category)}
       </h2>
       <div class="space-y-4 cursor-default">
@@ -160,10 +207,10 @@ function render(categories) {
           .map(
             (cmd) => `
           <div class="group">
-            <p class="text-[0.9rem] text-neutral-700/90 dark:text-neutral-200/90 leading-snug mb-2">${esc(cmd.description)}</p>
-            <div class="relative border border-neutral-700/10 dark:border-neutral-200/10 rounded-md overflow-hidden bg-neutral-200 dark:bg-neutral-900">
-              <pre class="text-xs font-mono text-neutral-900 dark:text-neutral-100 font-semibold px-3 py-2.5 pr-10 overflow-x-auto whitespace-pre-wrap">${esc(cmd.usage)}</pre>
-              <button type="button" class="copy-btn absolute top-1.5 right-1.5 p-1.5 rounded-md text-neutral-700/40 dark:text-neutral-200/40 opacity-0 group-hover:opacity-100 hover:text-neutral-700 dark:hover:text-neutral-200 hover:bg-neutral-700/10 dark:hover:bg-neutral-200/10 transition-all duration-100 ease-out focus:outline-none focus:opacity-100" aria-label="Copy command" data-cmd="${esc(cmd.usage).replace(/"/g, '&quot;')}">
+            <p class="text-[0.9rem] text-zinc-900/90 dark:text-zinc-200/90 leading-snug mb-2">${esc(cmd.description)}</p>
+            <div class="relative border ${p.codeBg} rounded-md overflow-hidden">
+              <pre class="text-xs font-mono ${p.codeText} font-semibold px-3 py-2.5 pr-10 overflow-x-auto whitespace-pre-wrap">${esc(cmd.usage)}</pre>
+              <button type="button" class="copy-btn absolute top-1.5 right-1.5 p-1.5 rounded-md ${p.btnText} opacity-0 group-hover:opacity-100 transition-all duration-100 ease-out focus:outline-none focus:opacity-100" aria-label="Copy command" data-cmd="${esc(cmd.usage).replace(/"/g, '&quot;')}">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                   <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -177,6 +224,7 @@ function render(categories) {
       </div>
     </div>
   `
+      }
     )
     .join('')
 }
