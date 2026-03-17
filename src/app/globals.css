@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  --font-mono: var(--font-mono);
+  
+  --color-stone-950: #0c0c0c;
+  --color-stone-900: #141414;
+  --color-stone-800: #1f1f1f;
+  --color-stone-700: #292929;
+  --color-stone-600: #3b3b3b;
+  --color-stone-500: #575757;
+  --color-stone-400: #7a7a7a;
+  --color-stone-300: #a3a3a3;
+  --color-stone-200: #e5e5e5;
+  --color-stone-100: #f5f5f5;
+  --color-stone-50: #fafafa;
+
+  --color-blue-accent: #3b82f6;
+  --color-orange-accent: #f97316;
+}
+
+@utility glass {
+  background: rgba(20, 20, 20, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+@utility glass-card {
+  background: rgba(31, 31, 31, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+@utility subtle-border {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@layer base {
+  body {
+    background-color: var(--color-stone-950);
+  }
+
+  /* Custom scrollbar matching dark dev aesthetic */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-stone-800);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-stone-600);
+  }
+}

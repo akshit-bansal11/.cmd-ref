@@ -1,7 +1,0 @@
-@import "tailwindcss";
-
-@variant dark (&:where(.dark, .dark *));
-
-.card {
-  break-inside: avoid;
-}

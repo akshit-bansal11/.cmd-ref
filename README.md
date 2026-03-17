@@ -1,15 +1,13 @@
 # Git & GitHub Commands Reference
 
-A fast, minimal masonry grid reference site for git and gh commands with theme toggle and real-time search.
+A fast, minimal reference site for git and gh commands built with Next.js App Router.
 
 ## Features
 
-- **Masonry Grid** - Responsive 3-column layout
-- **Auto-categorized** - Commands grouped by type (git init, git clone, gh pr, etc.)
-- **Real-time Search** - Filter commands instantly
-- **Light/Dark Mode** - Theme toggle with localStorage persistence
-- **Minimal Design** - Neutral palette (white, gray, black)
-- **Fast** - Built with Vite for optimal performance
+- **Tool Index** - Browse available command references
+- **Static Tool Pages** - Generated routes for each tool
+- **Tailwind CSS v4** - Utility-first styling with custom theme tokens
+- **Next.js App Router** - Server components and file-based routing
 
 ## Setup
 
@@ -23,7 +21,7 @@ npm install
 npm run dev
 ```
 
-Opens at `http://localhost:5173`
+Opens at `http://localhost:3000`
 
 ## Build
 
@@ -31,7 +29,7 @@ Opens at `http://localhost:5173`
 npm run build
 ```
 
-Creates optimized `dist/` folder ready for deployment.
+Creates an optimized `.next/` build.
 
 ## Deployment
 
@@ -41,32 +39,22 @@ npm install -g vercel
 vercel
 ```
 
-### Netlify
+### Self-hosted
 ```bash
 npm run build
-# Drag and drop dist/ folder to Netlify
+npm run start
 ```
-
-### GitHub Pages
-```bash
-npm run build
-# Push dist/ folder to gh-pages branch
-```
-
-### Any Static Host
-- Run `npm run build`
-- Deploy the `dist/` folder to your hosting
 
 ## File Structure
 
 ```
 ├── src/
-│   ├── index.html      # Main HTML
-│   ├── index.js        # Entry point
-│   ├── main.js         # App logic
-│   └── style.css       # Tailwind styles
+│   ├── app/            # App Router pages/layouts
+│   ├── components/     # Reusable UI components
+│   ├── data/           # Tool JSON data files
+│   └── lib/            # Data loading utilities
 ├── public/
-│   └── git_gh_commands.json  # Command data
+│   └── icons/          # Tool icons
 ├── package.json
-└── vite.config.js
+└── next.config.ts
 ```
