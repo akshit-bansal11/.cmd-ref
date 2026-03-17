@@ -3,3 +3,10 @@ dist
 .env
 .DS_Store
 *.log
+
+# Next.js build artifacts
+.next/
+out/
+
+# TypeScript build info
+*.tsbuildinfo
