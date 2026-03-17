@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const jetbrainsMono = JetBrains_Mono({
+// Use system monospace fonts instead of Google Fonts to avoid network dependency
+const jetbrainsMono = {
   variable: "--font-mono",
-  subsets: ["latin"],
-});
+  className: "font-mono",
+};
 
 export const metadata: Metadata = {
   title: "git_ref | Every command. One place.",

@@ -171,8 +171,12 @@ export default function ToolReference({ data }: { data: ToolData }) {
                     <div className="h-px flex-1 bg-white/[0.03]" />
                   </h2>
                   <div className="grid gap-4">
-                    {cat.commands.map((cmd: ToolCommand, idx: number) => (
-                      <CommandCard key={idx} cmd={cmd} accent={data.accent} />
+                    {cat.commands.map((cmd: ToolCommand) => (
+                      <CommandCard
+                        key={`${cmd.command}-${cat.title}`}
+                        cmd={cmd}
+                        accent={data.accent}
+                      />
                     ))}
                   </div>
                 </section>
@@ -188,10 +192,21 @@ export default function ToolReference({ data }: { data: ToolData }) {
 function CommandCard({ cmd, accent }: { cmd: ToolCommand, accent: string }) {
   const [copied, setCopied] = useState(false);
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(cmd.command);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const handleCopy = async () => {
+    // Check if clipboard API is available (may not exist in SSR or non-secure contexts)
+    if (typeof navigator === 'undefined' || !navigator.clipboard) {
+      console.warn('Clipboard API not available');
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(cmd.command);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (error) {
+      console.error('Failed to copy to clipboard:', error);
+      // Optionally show error feedback to user
+    }
   };
 
   return (
@@ -250,6 +265,23 @@ function CommandCard({ cmd, accent }: { cmd: ToolCommand, accent: string }) {
   );
 }
 
-function getCategorySlug(title: string) {
-  return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+function getCategorySlug(title: string): string {
+  // Handle empty or whitespace-only titles
+  if (!title || !title.trim()) {
+    console.error('Category title cannot be empty');
+    return 'untitled-category';
+  }
+
+  const slug = title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+
+  // If slug is empty after processing (e.g., title was only special characters)
+  if (!slug) {
+    console.warn(`Generated empty slug from title: "${title}", using fallback`);
+    return 'category';
+  }
+
+  return slug;
 }
