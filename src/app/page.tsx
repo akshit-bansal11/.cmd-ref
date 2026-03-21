@@ -68,8 +68,8 @@ function ToolCard({ tool }: { tool: ToolData }) {
           <Image 
             src={tool.logo} 
             alt={`${tool.name} logo`} 
-            width={24} 
-            height={24} 
+            width={30} 
+            height={30} 
             className="group-hover:scale-110 transition-transform duration-300 drop-shadow-md"
           />
         </div>
