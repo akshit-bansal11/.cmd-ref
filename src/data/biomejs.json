@@ -2,7 +2,7 @@
   "name": "Biome",
   "slug": "biome",
   "logo": "https://svgl.app/library/biomejs.svg",
-  "accent": "#FBC02D",
+  "accent": "#60a5fa",
   "description": "One toolchain for your web project",
   "categories": [
     {
